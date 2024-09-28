@@ -8,10 +8,6 @@
 
 Automated build daily at 12:00 PM (UTC+0), which is 8:00 PM (CST).
 
-目前 `BEEESSS_Hikari_Female` **有贴图错位问题**，本人能力有限，如果您会修复，请向仓库提交pr。
-
-Currently, BEEESSS_Hikari_Female has a texture misalignment issue. My skills are limited, so if you can fix it, please submit a PR to the repository.
-
 如果有其它问题，请提交issues，但在提交issues前请先检查是否有相同的issues。
 
 If you encounter other issues, please submit an issue, but check for duplicates first.
