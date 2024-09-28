@@ -19,15 +19,16 @@ If you encounter other issues, please submit an issue, but check for duplicates 
 ## Credits
 
 - Mod Loader
+
   - [ModLoader](https://github.com/Lyoko-Jeremie/sugarcube-2-ModLoader)
-
 - Python Script
+
   - [Dol-BJX-Mods](https://github.com/cphxj123/Dol-BJX-Mods)
-
 - Upstream Repo
-  - [Degrees of Lewdity Plus](https://gitgud.io/Frostberg/degrees-of-lewdity-plus)
 
+  - [Degrees of Lewdity Plus](https://gitgud.io/Frostberg/degrees-of-lewdity-plus)
 - Art
+
   - [Degrees of Lewdity Graphics Mod (BEEESSS)](https://gitgud.io/BEEESSS/degrees-of-lewdity-graphics-mod)
   - [BEEESSS Community Sprite Compilation](https://gitgud.io/Kaervek/kaervek-beeesss-community-sprite-compilation)
   - [BEEESSS Wax](https://gitgud.io/GTXMEGADUDE/beeesss-wax)
@@ -36,9 +37,9 @@ If you encounter other issues, please submit an issue, but check for duplicates 
   - [Paril Double Cheeseburger](https://gitgud.io/GTXMEGADUDE/double-cheeseburger)
   - [DOL BJ Hair Extend](https://github.com/zubonko/DOL_BJ_hair_extend)
 
-**hikfemsubs我找不到发布地址，如果您知道请与我联系。
+**hikfemsubs我找不到发布地址，如果您知道请与我联系。**
 
-I can't find the release link for hikfemsubs; please contact me if you know it.**
+**I can't find the release link for hikfemsubs; please contact me if you know it.**
 
 可能会有遗漏，如果您发现自己不在名单内请与我联系。
 
