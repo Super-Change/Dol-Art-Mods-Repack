@@ -184,7 +184,7 @@ jobs:
       - name: Download BEEESSS_Wax
         uses: actions/download-artifact@v4
         with:
-          name: BEEESSS_Wax
+          name: BEEESSS_Wax-package
           
       - name: Download BEEESSS_Paril_Hairstyle_Extended
         uses: actions/download-artifact@v4
