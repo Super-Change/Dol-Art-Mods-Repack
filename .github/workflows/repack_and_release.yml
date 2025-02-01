@@ -13,6 +13,7 @@ permissions:
   pull-requests: write
 
 jobs:
+  # BEEESSS_Hikari_Female
   repack-BHF:
     runs-on: ubuntu-latest
 
@@ -65,6 +66,7 @@ jobs:
           name: BEEESSS_Hikari_Female-package
           path: BEEESSS_Hikari_Female.zip
 
+  # BEEESSS_Paril_Hairstyle_Extended
   repack-BPHE:
     runs-on: ubuntu-latest
 
@@ -117,6 +119,7 @@ jobs:
           name: BEEESSS_Paril_Hairstyle_Extended-package
           path: BEEESSS_Paril_Hairstyle_Extended.zip
 
+  # BEEESSS_Wax
   repack-BW:
     runs-on: ubuntu-latest
 
@@ -168,55 +171,7 @@ jobs:
           name: BEEESSS_Wax-package
           path: BEEESSS_Wax.zip
 
-  repack-GF:
-    runs-on: ubuntu-latest
-
-    steps:
-      # Step 1: Checkout current repository code
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # Step 2: Clone external repository
-      - name: Clone external repository
-        run: |
-          git clone https://gitgud.io/Frostberg/degrees-of-lewdity-plus.git
-          cd degrees-of-lewdity-plus
-
-      # Step 3: Locate imagepacks and prepare img folder
-      - name: Prepare img folder
-        run: |
-          cd degrees-of-lewdity-plus/imagepacks
-          mkdir -p Goose_Female/img/                   #创建文件夹
-          # cp -r -f vanilla/* Goose_Female/img/       #原版图包
-          # cp -r -f dolp/* Goose_Female/img/          #DOLP图包
-          cp -r -f goosefem/* Goose_Female/img/
-          cp -r -f goosefemsubs/* Goose_Female/img/
-          mv Goose_Female ../../Goose_Female  #移动回仓库默认路径下
-
-      # Step 4: Set version and name
-      - name: Set version
-        id: version_step
-        run: |
-          echo "MOD_VERSION_GF=$(date +'%y-%m-%d')" >> $GITHUB_ENV  # 设置版本号
-          echo "MOD_NAME_GF=Goose_Female" >> $GITHUB_ENV   # 设置模组名称
-
-      # Step 5: Run Python script to package the folder
-      - name: Run Python packaging script
-        run: |
-          cd Goose_Female
-          python3 ../python/Art_Mods_Actions.py --input img --output ${{ env.MOD_NAME_GF }}.zip --version ${{ env.MOD_VERSION_GF }}
-          mv Goose_Female.zip ../Goose_Female.zip
-        env:
-          MOD_NAME: ${{ env.MOD_NAME_GF }}        # 传递 MOD_NAME 环境变量
-          MOD_VERSION: ${{ env.MOD_VERSION_GF }}  # 传递 MOD_VERSION 环境变量
-
-      # Step 6: Upload artifact from workflow repack_GF
-      - name: Upload artifact from workflow repack_GF
-        uses: actions/upload-artifact@v4
-        with:
-          name: Goose_Female-package
-          path: Goose_Female.zip
-
+  # Goose_Female_Mysterious
   repack-GFM:
     runs-on: ubuntu-latest
 
@@ -267,9 +222,59 @@ jobs:
           name: Goose_Female_Mysterious-package
           path: Goose_Female_Mysterious.zip
 
+  # Goose_Female
+  repack-GF:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout current repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Clone external repository
+      - name: Clone external repository
+        run: |
+          git clone https://gitgud.io/Frostberg/degrees-of-lewdity-plus.git
+          cd degrees-of-lewdity-plus
+
+      # Step 3: Locate imagepacks and prepare img folder
+      - name: Prepare img folder
+        run: |
+          cd degrees-of-lewdity-plus/imagepacks
+          mkdir -p Goose_Female/img/                   #创建文件夹
+          # cp -r -f vanilla/* Goose_Female/img/       #原版图包
+          # cp -r -f dolp/* Goose_Female/img/          #DOLP图包
+          cp -r -f goosefem/* Goose_Female/img/
+          cp -r -f goosefemsubs/* Goose_Female/img/
+          mv Goose_Female ../../Goose_Female  #移动回仓库默认路径下
+
+      # Step 4: Set version and name
+      - name: Set version
+        id: version_step
+        run: |
+          echo "MOD_VERSION_GF=$(date +'%y-%m-%d')" >> $GITHUB_ENV  # 设置版本号
+          echo "MOD_NAME_GF=Goose_Female" >> $GITHUB_ENV   # 设置模组名称
+
+      # Step 5: Run Python script to package the folder
+      - name: Run Python packaging script
+        run: |
+          cd Goose_Female
+          python3 ../python/Art_Mods_Actions.py --input img --output ${{ env.MOD_NAME_GF }}.zip --version ${{ env.MOD_VERSION_GF }}
+          mv Goose_Female.zip ../Goose_Female.zip
+        env:
+          MOD_NAME: ${{ env.MOD_NAME_GF }}        # 传递 MOD_NAME 环境变量
+          MOD_VERSION: ${{ env.MOD_VERSION_GF }}  # 传递 MOD_VERSION 环境变量
+
+      # Step 6: Upload artifact from workflow repack_GF
+      - name: Upload artifact from workflow repack_GF
+        uses: actions/upload-artifact@v4
+        with:
+          name: Goose_Female-package
+          path: Goose_Female.zip
+
   create-release:
     runs-on: ubuntu-latest
-    needs: [repack-BHF, repack-BPHE, repack-BW, repack-GF, repack-GFM]  # 完成依赖后开始
+    needs: [repack-BHF, repack-BPHE, repack-BW, repack-GFM, repack-GF]  # 完成依赖后开始
 
     steps:
       - name: Checkout code
@@ -295,46 +300,46 @@ jobs:
         with:
           name: BEEESSS_Wax-package
 
-      - name: Download Goose_Female
-        uses: actions/download-artifact@v4
-        with:
-          name: Goose_Female-package
-
       - name: Download Goose_Female_Mysterious
         uses: actions/download-artifact@v4
         with:
           name: Goose_Female_Mysterious-package
 
+      - name: Download Goose_Female
+        uses: actions/download-artifact@v4
+        with:
+          name: Goose_Female-package
+
       # 生成SHA256
-      - name: Calculate SHA256 for BHF
+      - name: Calculate SHA256 for BEEESSS_Hikari_Female.zip
         id: sha256-BHF
         run: |
             sha256=$(shasum -a 256 BEEESSS_Hikari_Female.zip | awk '{print $1}')
             echo "SHA256_BHF=$sha256" >> $GITHUB_ENV
 
-      - name: Calculate SHA256 for BPHE
+      - name: Calculate SHA256 for BEEESSS_Paril_Hairstyle_Extended.zip
         id: sha256-BPHE
         run: |
             sha256=$(shasum -a 256 BEEESSS_Paril_Hairstyle_Extended.zip | awk '{print $1}')
             echo "SHA256_BPHE=$sha256" >> $GITHUB_ENV
 
-      - name: Calculate SHA256 for BW
+      - name: Calculate SHA256 for BEEESSS_Wax.zip
         id: sha256-BW
         run: |
               sha256=$(shasum -a 256 BEEESSS_Wax.zip | awk '{print $1}')
               echo "SHA256_BW=$sha256" >> $GITHUB_ENV
 
-      - name: Calculate SHA256 for GF
-        id: sha256-GF
-        run: |
-              sha256=$(shasum -a 256 Goose_Female.zip | awk '{print $1}')
-              echo "SHA256_BW=$sha256" >> $GITHUB_ENV
-              
-      - name: Calculate SHA256 for GFM
+      - name: Calculate SHA256 for Goose_Female_Mysterious.zip
         id: sha256-GFM
         run: |
               sha256=$(shasum -a 256 Goose_Female_Mysterious.zip | awk '{print $1}')
-              echo "SHA256_BW=$sha256" >> $GITHUB_ENV
+              echo "SHA256_GFM=$sha256" >> $GITHUB_ENV
+
+      - name: Calculate SHA256 for Goose_Female.zip
+        id: sha256-GF
+        run: |
+              sha256=$(shasum -a 256 Goose_Female.zip | awk '{print $1}')
+              echo "SHA256_GF=$sha256" >> $GITHUB_ENV
 
       # 发布到Release
       - name: Create Release
@@ -350,8 +355,8 @@ jobs:
                 - BEEESSS_Hikari_Female.zip: `${{ env.SHA256_BHF }}`
                 - BEEESSS_Paril_Hairstyle_Extended.zip: `${{ env.SHA256_BPHE }}`
                 - BEEESSS_Wax.zip: `${{ env.SHA256_BW }}`
-                - Goose_Female.zip: `${{ env.SHA256_GF }}`
                 - Goose_Female_Mysterious.zip: `${{ env.SHA256_GFM }}`
+                - Goose_Female.zip: `${{ env.SHA256_GF }}`
                 ## Verify Your Download
                 PowerShell: `certutil -hashfile [file] sha256`
                 Linux Terminal: `shasum -a 256 [file]` 
@@ -359,7 +364,7 @@ jobs:
                 BEEESSS_Hikari_Female.zip
                 BEEESSS_Paril_Hairstyle_Extended.zip
                 BEEESSS_Wax.zip
-                Goose_Female.zip
                 Goose_Female_Mysterious.zip
+                Goose_Female.zip
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
