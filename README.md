@@ -32,6 +32,8 @@ If you encounter other issues, please submit an issue, but check for duplicates 
   - [hikfemsubs](?)
   - [Paril Double Cheeseburger](https://gitgud.io/GTXMEGADUDE/double-cheeseburger)
   - [DOL BJ Hair Extend](https://github.com/zubonko/DOL_BJ_hair_extend)
+  - [Goose](https://gitgud.io/goose/createshit)
+  - [Mysterious](https://github.com/Zed660033/mysterious)
 
 **hikfemsubs我找不到发布地址，如果您知道请与我联系。**
 
