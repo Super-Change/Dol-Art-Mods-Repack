@@ -66,58 +66,58 @@ jobs:
           name: BEEESSS_Hikari_Female-package
           path: BEEESSS_Hikari_Female.zip
 
-  # BEEESSS_Paril_Hairstyle_Extended
-  repack-BPHE:
-    runs-on: ubuntu-latest
+  # # BEEESSS_Paril_Hairstyle_Extended
+  # repack-BPHE:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      # Step 1: Checkout current repository code
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  #   steps:
+  #     # Step 1: Checkout current repository code
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
 
-      # Step 2: Clone external repository
-      - name: Clone external repository
-        run: |
-          git clone https://gitgud.io/Frostberg/degrees-of-lewdity-plus.git
-          cd degrees-of-lewdity-plus
+  #     # Step 2: Clone external repository
+  #     - name: Clone external repository
+  #       run: |
+  #         git clone https://gitgud.io/Frostberg/degrees-of-lewdity-plus.git
+  #         cd degrees-of-lewdity-plus
 
-      # Step 3: Locate imagepacks and prepare img folder
-      - name: Prepare img folder
-        run: |
-          cd degrees-of-lewdity-plus/imagepacks
-          mkdir -p BEEESSS_Paril_Hairstyle_Extended/img/                              #创建文件夹
-          # cp -r -f vanilla/* BEEESSS_Paril_Hairstyle_Extended/img/                  #原版图包
-          # cp -r -f dolp/* BEEESSS_Paril_Hairstyle_Extended/img/                     #DOLP图包
-          cp -r -f b3s/* BEEESSS_Paril_Hairstyle_Extended/img/
-          cp -r -f kaervek/* BEEESSS_Paril_Hairstyle_Extended/img/
-          # cp -r -f dolp_b3s/* BEEESSS_Paril_Hairstyle_Extended/img/                 #DOLP美化图包
-          cp -r -f parilold/* BEEESSS_Paril_Hairstyle_Extended/img/
-          cp -r -f hairext/* BEEESSS_Paril_Hairstyle_Extended/img/  
-          mv BEEESSS_Paril_Hairstyle_Extended ../../BEEESSS_Paril_Hairstyle_Extended  #移动回仓库默认路径下
+  #     # Step 3: Locate imagepacks and prepare img folder
+  #     - name: Prepare img folder
+  #       run: |
+  #         cd degrees-of-lewdity-plus/imagepacks
+  #         mkdir -p BEEESSS_Paril_Hairstyle_Extended/img/                              #创建文件夹
+  #         # cp -r -f vanilla/* BEEESSS_Paril_Hairstyle_Extended/img/                  #原版图包
+  #         # cp -r -f dolp/* BEEESSS_Paril_Hairstyle_Extended/img/                     #DOLP图包
+  #         cp -r -f b3s/* BEEESSS_Paril_Hairstyle_Extended/img/
+  #         cp -r -f kaervek/* BEEESSS_Paril_Hairstyle_Extended/img/
+  #         # cp -r -f dolp_b3s/* BEEESSS_Paril_Hairstyle_Extended/img/                 #DOLP美化图包
+  #         cp -r -f parilold/* BEEESSS_Paril_Hairstyle_Extended/img/
+  #         cp -r -f hairext/* BEEESSS_Paril_Hairstyle_Extended/img/  
+  #         mv BEEESSS_Paril_Hairstyle_Extended ../../BEEESSS_Paril_Hairstyle_Extended  #移动回仓库默认路径下
 
-      # Step 4: Set version and name
-      - name: Set version
-        id: version_step
-        run: |
-          echo "MOD_VERSION_BPHE=$(date +'%y-%m-%d')" >> $GITHUB_ENV            # 设置版本号
-          echo "MOD_NAME_BPHE=BEEESSS_Paril_Hairstyle_Extended" >> $GITHUB_ENV  # 设置模组名称
+  #     # Step 4: Set version and name
+  #     - name: Set version
+  #       id: version_step
+  #       run: |
+  #         echo "MOD_VERSION_BPHE=$(date +'%y-%m-%d')" >> $GITHUB_ENV            # 设置版本号
+  #         echo "MOD_NAME_BPHE=BEEESSS_Paril_Hairstyle_Extended" >> $GITHUB_ENV  # 设置模组名称
 
-      # Step 5: Run Python script to package the folder
-      - name: Run Python packaging script
-        run: |
-          cd BEEESSS_Paril_Hairstyle_Extended
-          python3 ../python/Art_Mods_Actions.py --input img --output ${{ env.MOD_NAME_BPHE }}.zip --version ${{ env.MOD_VERSION_BPHE }}
-          mv BEEESSS_Paril_Hairstyle_Extended.zip ../BEEESSS_Paril_Hairstyle_Extended.zip
-        env:
-          MOD_NAME: ${{ env.MOD_NAME_BPHE }}        # 传递 MOD_NAME 环境变量
-          MOD_VERSION: ${{ env.MOD_VERSION_BPHE }}  # 传递 MOD_VERSION 环境变量
+  #     # Step 5: Run Python script to package the folder
+  #     - name: Run Python packaging script
+  #       run: |
+  #         cd BEEESSS_Paril_Hairstyle_Extended
+  #         python3 ../python/Art_Mods_Actions.py --input img --output ${{ env.MOD_NAME_BPHE }}.zip --version ${{ env.MOD_VERSION_BPHE }}
+  #         mv BEEESSS_Paril_Hairstyle_Extended.zip ../BEEESSS_Paril_Hairstyle_Extended.zip
+  #       env:
+  #         MOD_NAME: ${{ env.MOD_NAME_BPHE }}        # 传递 MOD_NAME 环境变量
+  #         MOD_VERSION: ${{ env.MOD_VERSION_BPHE }}  # 传递 MOD_VERSION 环境变量
 
-      # Step 6: Upload artifact from workflow repack_BPHE
-      - name: Upload artifact from workflow repack_BPHE
-        uses: actions/upload-artifact@v4
-        with:
-          name: BEEESSS_Paril_Hairstyle_Extended-package
-          path: BEEESSS_Paril_Hairstyle_Extended.zip
+  #     # Step 6: Upload artifact from workflow repack_BPHE
+  #     - name: Upload artifact from workflow repack_BPHE
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: BEEESSS_Paril_Hairstyle_Extended-package
+  #         path: BEEESSS_Paril_Hairstyle_Extended.zip
 
   # BEEESSS_Wax
   repack-BW:
@@ -274,7 +274,8 @@ jobs:
 
   create-release:
     runs-on: ubuntu-latest
-    needs: [repack-BHF, repack-BPHE, repack-BW, repack-GF, repack-GFM]  # 完成依赖后开始
+    # needs: [repack-BHF, repack-BPHE, repack-BW, repack-GF, repack-GFM]  # 完成依赖后开始
+    needs: [repack-BHF, repack-BW, repack-GF, repack-GFM]  # 完成依赖后开始
 
     steps:
       - name: Checkout code
@@ -290,10 +291,10 @@ jobs:
         with:
           name: BEEESSS_Hikari_Female-package
           
-      - name: Download BEEESSS_Paril_Hairstyle_Extended
-        uses: actions/download-artifact@v4
-        with:
-          name: BEEESSS_Paril_Hairstyle_Extended-package
+      # - name: Download BEEESSS_Paril_Hairstyle_Extended
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: BEEESSS_Paril_Hairstyle_Extended-package
 
       - name: Download BEEESSS_Wax
         uses: actions/download-artifact@v4
@@ -317,11 +318,11 @@ jobs:
             sha256=$(shasum -a 256 BEEESSS_Hikari_Female.zip | awk '{print $1}')
             echo "SHA256_BHF=$sha256" >> $GITHUB_ENV
 
-      - name: Calculate SHA256 for BEEESSS_Paril_Hairstyle_Extended.zip
-        id: sha256-BPHE
-        run: |
-            sha256=$(shasum -a 256 BEEESSS_Paril_Hairstyle_Extended.zip | awk '{print $1}')
-            echo "SHA256_BPHE=$sha256" >> $GITHUB_ENV
+      # - name: Calculate SHA256 for BEEESSS_Paril_Hairstyle_Extended.zip
+      #   id: sha256-BPHE
+      #   run: |
+      #       sha256=$(shasum -a 256 BEEESSS_Paril_Hairstyle_Extended.zip | awk '{print $1}')
+      #       echo "SHA256_BPHE=$sha256" >> $GITHUB_ENV
 
       - name: Calculate SHA256 for BEEESSS_Wax.zip
         id: sha256-BW
@@ -341,6 +342,34 @@ jobs:
               sha256=$(shasum -a 256 Goose_Female_Mysterious.zip | awk '{print $1}')
               echo "SHA256_GFM=$sha256" >> $GITHUB_ENV
 
+      # # 发布到Release
+      # - name: Create Release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #       tag_name: "release-${{ env.RELEASE_DATE }}"  # 使用生成的日期作为标签
+      #       name: "Release ${{ env.RELEASE_DATE }}"      # Release标题名称
+      #       draft: false
+      #       prerelease: false
+      #       body: |
+      #           ${{ env.RELEASE_DATE }}
+      #           ## File SHA256 Checksums
+      #           - BEEESSS_Hikari_Female.zip: `${{ env.SHA256_BHF }}`
+      #           - BEEESSS_Paril_Hairstyle_Extended.zip: `${{ env.SHA256_BPHE }}`
+      #           - BEEESSS_Wax.zip: `${{ env.SHA256_BW }}`
+      #           - Goose_Female.zip: `${{ env.SHA256_GF }}`
+      #           - Goose_Female_Mysterious.zip: `${{ env.SHA256_GFM }}`
+      #           ## Verify Your Download
+      #           PowerShell: `certutil -hashfile [file] sha256`
+      #           Linux Terminal: `shasum -a 256 [file]` 
+      #       files: |
+      #           BEEESSS_Hikari_Female.zip
+      #           BEEESSS_Paril_Hairstyle_Extended.zip
+      #           BEEESSS_Wax.zip
+      #           Goose_Female.zip
+      #           Goose_Female_Mysterious.zip
+      #   env:
+      #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       # 发布到Release
       - name: Create Release
         uses: softprops/action-gh-release@v1
@@ -353,7 +382,6 @@ jobs:
                 ${{ env.RELEASE_DATE }}
                 ## File SHA256 Checksums
                 - BEEESSS_Hikari_Female.zip: `${{ env.SHA256_BHF }}`
-                - BEEESSS_Paril_Hairstyle_Extended.zip: `${{ env.SHA256_BPHE }}`
                 - BEEESSS_Wax.zip: `${{ env.SHA256_BW }}`
                 - Goose_Female.zip: `${{ env.SHA256_GF }}`
                 - Goose_Female_Mysterious.zip: `${{ env.SHA256_GFM }}`
@@ -362,7 +390,6 @@ jobs:
                 Linux Terminal: `shasum -a 256 [file]` 
             files: |
                 BEEESSS_Hikari_Female.zip
-                BEEESSS_Paril_Hairstyle_Extended.zip
                 BEEESSS_Wax.zip
                 Goose_Female.zip
                 Goose_Female_Mysterious.zip
